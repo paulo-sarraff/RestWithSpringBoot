@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.sarraff.data.model.Person;
 import br.com.sarraff.exception.ResourceNotFoundException;
-import br.com.sarraff.model.Person;
 import br.com.sarraff.repository.PersonRepository;
 
 @Service

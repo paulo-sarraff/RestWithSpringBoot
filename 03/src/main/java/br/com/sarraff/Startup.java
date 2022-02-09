@@ -1,4 +1,5 @@
-package br.com.sarraff.restwithspringboot;
+package br.com.sarraff;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

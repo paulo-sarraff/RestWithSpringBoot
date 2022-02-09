@@ -1,4 +1,4 @@
-package br.com.sarraff.model;
+package br.com.sarraff.data.model;
 
 import java.io.Serializable;
 
