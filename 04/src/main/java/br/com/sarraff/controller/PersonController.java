@@ -25,7 +25,7 @@ public class PersonController {
 	private PersonService services;
 	
 	@GetMapping(value="/{id}")
-	public Person findById(@PathVariable("id") Long id) {
+	public PersonVO findById(@PathVariable("id") Long id) {
 		return services.findById(id);
 	}
 	

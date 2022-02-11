@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.sarraff.converter.DozerConverter;
 import br.com.sarraff.data.model.Person;
+import br.com.sarraff.data.vo.PersonVO;
 import br.com.sarraff.exception.ResourceNotFoundException;
 import br.com.sarraff.repository.PersonRepository;
 
@@ -15,19 +17,22 @@ public class PersonService {
 	@Autowired
 	PersonRepository repositorio;
 
-	public Person create(Person person) {
-		return repositorio.save(person);
+	public PersonVO create(PersonVO person) {
+		var entity = DozerConverter.parseObject(person, Person.class);
+		var vo = DozerConverter.parseObject(repositorio.save(entity), PersonVO.class);
+		return vo;
 	}
 	
-	public Person update(Person person) {
-		Person entity = repositorio.findById(person.getId())
+	public PersonVO update(PersonVO person) {
+		var entity = repositorio.findById(person.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("No records found for this ID."));
 		entity.setFirstName(person.getFirstName());
 		entity.setLastName(person.getLastName());
 		entity.setAddress(person.getAddress());
 		entity.setGender(person.getGender());
 		
-		return repositorio.save(entity);
+		var vo = DozerConverter.parseObject(repositorio.save(entity), PersonVO.class);
+		return vo;
 	}
 
 	public void delete(Long id) {
@@ -37,11 +42,12 @@ public class PersonService {
 		repositorio.delete(entity);
 	}
 	
-	public Person findById(Long id) {
-		return repositorio.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID."));
+	public PersonVO findById(Long id) {
+		var entity =  repositorio.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID."));
+		return DozerConverter.parseObject(entity, PersonVO.class);
 	}
 	
-	public List<Person> findAll(){
-		return repositorio.findAll();
+	public List<PersonVO> findAll(){
+		return DozerConverter.parseListObjects(repositorio.findAll(), PersonVO.class) ;
 	}
 }
