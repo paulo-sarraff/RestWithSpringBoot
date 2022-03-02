@@ -18,7 +18,7 @@ import br.com.sarraff.data.vo.v2.PersonVOV2;
 import br.com.sarraff.services.PersonService;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 	
 	@Autowired
