@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.3</version>
+		<relativePath/>
+	</parent>
+	<groupId>br.com.sarraff</groupId>
+	<artifactId>rest-with-springboot</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>rest-with-springboot</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+	<project.build.sourceEnconding>UTF-8</project.build.sourceEnconding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding> 
+		<java.version>11</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.flywaydb</groupId>
+		    <artifactId>flyway-core</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.github.dozermapper</groupId>
+		    <artifactId>dozer-core</artifactId>
+		    <version>6.5.2</version>
+		</dependency>		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+
+		<!--for Swagger Endpoints support-->
+		<dependency>
+		   <groupId>io.springfox</groupId>
+		   <artifactId>springfox-swagger2</artifactId>
+		   <version>LATEST</version>
+		</dependency>
+		 
+		<!--for Swagger UI support-->
+		<dependency>
+		   <groupId>io.springfox</groupId>
+		   <artifactId>springfox-swagger-ui</artifactId>
+		   <version>2.8.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-yaml</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt</artifactId>
+		    <version>0.9.1</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+			    <groupId>org.flywaydb</groupId>
+			    <artifactId>flyway-maven-plugin</artifactId>
+			    <configuration>
+			    <url>jdbc:mysql://db:3306/rest_with_spring_boot</url>
+			    	<user>root</user>
+			    	<password>1234</password>
+			    </configuration>
+			    <dependencies>
+			    	<dependency>
+			    		<groupId>mysql</groupId>
+			    		<artifactId>mysql-connector-java</artifactId>
+			    		<version>${mysql.version}</version>
+			    		<exclusions>
+			    			<exclusion>
+			    				<artifactId>slf4j-api</artifactId>
+			    				<groupId>org.slf4j</groupId>
+			    			</exclusion>
+			    		</exclusions>
+			    	</dependency>
+			    </dependencies>
+			</plugin>	
+		</plugins>
+	</build>
+
+</project>

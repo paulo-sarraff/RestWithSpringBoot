@@ -1,0 +1,18 @@
+language: bash
+services: docker
+before_install: 
+  - cd 19/
+  - echo "We are in the Docker folder!"
+ script:
+   - docker-compose build
+before_deploy:
+  - echo "${DOCKER_PASSWORD}" | docker login --username "{DOCKER_USERNAME}" --password-stdin
+deploy:
+  provider: script
+  script:
+    docker push sarraff/mysql-rest-with-spring-boot;
+    docker push sarraff/rest-with-spring-boot;
+  on:
+    branch: master
+notifications:
+  email: false
