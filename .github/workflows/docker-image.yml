@@ -27,7 +27,7 @@ jobs:
         run: mvn clean package
  
       - name: Docker Build
-        working-directory: .19/19
+        working-directory: ./sarraff/rest-with-springboot/
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/rest-with-springboot:${{github.run_id}} .
  
       - name: Push to Docker Hub Container Registry
