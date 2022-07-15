@@ -21,9 +21,6 @@ jobs:
            cd 19/19/
            mvn clean package
       
-    - name: Voltando a pasta do Docker
-      run: cd ..
-    
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
