@@ -18,7 +18,7 @@ jobs:
       run: sudo apt-get update
     
     - run: cd 19/19/
-    - run: mvn clean package
+           mvn clean package
       
     - name: Voltando a pasta do Docker
       run: cd ..
