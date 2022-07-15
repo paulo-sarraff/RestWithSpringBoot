@@ -18,9 +18,9 @@ jobs:
       run: sudo apt-get update
     
     - name: Change to Docker folder
-      run: cd /19/19
+      run: ls
     
-    - name: Maven clean
+    - name: Maven start package
       run: mvn clean package
       
     - name: Voltando a pasta do Docker
