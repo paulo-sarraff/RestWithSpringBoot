@@ -66,9 +66,9 @@ jobs:
 
     - name: Add apt-repository, update and install
       run: |
-        add-apt-repository ppa:eugenesan/ppa
-        apt-get update
-        apt-get install jq -y
+        sudo add-apt-repository ppa:eugenesan/ppa
+        sudo apt-get update
+        sudo apt-get install jq -y
         
     - name: Curl
       run: |        
