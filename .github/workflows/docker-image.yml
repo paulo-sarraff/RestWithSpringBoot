@@ -56,7 +56,10 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-          
+
+    - name: Change to Docker folder
+      run: cd 19/19/
+
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
