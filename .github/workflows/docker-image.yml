@@ -55,14 +55,31 @@ jobs:
         pip3 install awscli --upgrade --user
         export PATH=$PATH:$HOME/.local/bin
         eval $(aws ecr get-login --no-include-email --region ${{ secrets.AWS_DEFAULT_REGION }})
+        
+    - name: Docker tag
+      run: |   
         docker tag rest-with-spring-boot:latest ${{ secrets.IMAGE_REPO_URL }}:${{ github.sha }}
+    
+    - name: Docker push
+      run: |
         docker push ${{ secrets.IMAGE_REPO_URL }}:${{ github.sha }}
+
+    - name: Add apt-repository, update and install
+      run: |
         add-apt-repository ppa:eugenesan/ppa
         apt-get update
         apt-get install jq -y
+        
+    - name: Curl
+      run: |        
         curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | sudo tee -a /usr/bin/ecs-deploy
+
+    - name: Sudo chmod
+      run: |
         sudo chmod +x /usr/bin/ecs-deploy
         echo "AWS ECS-Deploy Setup is Configured"
-        ecs-deploy -c ${{ secrets.CLUSTER_NAME}} -n ${{ secrets.SERVICE_NAME }} -i ${{ secrets.IMAGE_REPO_URL }}:${{ github.sha }} -r ${{ secrets.AWS_DEFAULT_REGION }} -t 240
+
+    - name: ECS Deploy
+      run: ecs-deploy -c ${{ secrets.CLUSTER_NAME}} -n ${{ secrets.SERVICE_NAME }} -i ${{ secrets.IMAGE_REPO_URL }}:${{ github.sha }} -r ${{ secrets.AWS_DEFAULT_REGION }} -t 240
         
         
