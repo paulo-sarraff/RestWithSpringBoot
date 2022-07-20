@@ -34,14 +34,15 @@ jobs:
       
     - name: Build, tag, and push docker image to Amazon ECR
       env:
-        REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        REPOSITORY: rest-with-spring-boot
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: rest-with-spring-boot
         IMAGE_TAG: ${{ github.sha }}
       run: |
         cd 19/19/
         docker-compose build
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
     
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
