@@ -40,8 +40,8 @@ jobs:
       run: |
         cd 19/19/
         docker-compose build
-        docker build -t $REGISTRY/sarraff/$REPOSITORY:$IMAGE_TAG .
-        docker push $REGISTRY/sarraff/$REPOSITORY:$IMAGE_TAG
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
     
     - name: After push Docker Image
       run: |
