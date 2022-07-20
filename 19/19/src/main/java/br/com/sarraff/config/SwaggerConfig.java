@@ -30,7 +30,7 @@ public class SwaggerConfig {
 	private ApiInfo apiInfo() {
 
 		return new ApiInfo("RESTFull API With SpringBoot 2.1.3 CI/CD",
-				"Some descrption about your API",
+				"Teste para comprovar CI/CD",
 				"v1",
 				"Terms os Service Url",
 				new Contact("Paulo Sarraff", "www.sarraff.com", "sarraffjr@gmail.com"),
