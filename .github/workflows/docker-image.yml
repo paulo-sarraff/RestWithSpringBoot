@@ -39,6 +39,7 @@ jobs:
         ECR_REPOSITORY: rest-with-spring-boot
         IMAGE_TAG: ${{ github.sha }}
       run: |
+        cd 19/19/
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
