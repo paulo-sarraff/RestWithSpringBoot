@@ -15,7 +15,7 @@ services:
     networks:
       - udemy-network
   rest-with-spring-boot:
-    image: sarraff/rest-with-spring-boot
+    image: rest-with-spring-boot
     restart: always
     build: ./19
     working_dir: /19
