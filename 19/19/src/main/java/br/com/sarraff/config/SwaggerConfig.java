@@ -28,7 +28,8 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo("RESTFul API With SpringBoot 2.1.3 Test",
+
+		return new ApiInfo("RESTFull API With SpringBoot 2.1.3 CI/CD",
 				"Some descrption about your API",
 				"v1",
 				"Terms os Service Url",
